@@ -1,0 +1,220 @@
+@import url("./normalize.css");
+
+// === FONTS ===
+@font-face {
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  src: local("Montserrat Medium"),
+    url("../fonts/Montserrat-Medium.woff2") format("woff2"),
+    url("../fonts/Montserrat-Medium.woff") format("woff"),
+    url("../fonts/Montserrat-Medium.ttf") format("ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  src: local("Montserrat Bold"),
+    url("../fonts/Montserrat-Bold.woff2") format("woff2"),
+    url("../fonts/Montserrat-Bold.woff") format("woff"),
+    url("../fonts/Montserrat-Bold.ttf") format("ttf");
+  font-display: swap;
+}
+// === / FONTS ===
+
+// === MIXIN ===
+@mixin list-null {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@mixin montserrat-medium {
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-weight: 500;
+}
+
+@mixin montserrat-bold {
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-weight: 600;
+}
+// === / MIXIN ===
+
+// === FUNCTIONS ===
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function rem($num) {
+  @return (strip-unit($num) / 16) * 1rem;
+}
+// === / FUNCTIONS ===
+
+// === VARIABLES ===
+$base: 4px;
+// === / VARIABLES ===
+
+// === COMMON ===
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Arial", sans-serif;
+  color: #000;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1055px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #e5e5e5;
+  text-align: center;
+  padding-top: 200px;
+  padding-bottom: 100px;
+
+  &__heading {
+    font-size: 75px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    @include montserrat-bold;
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    font-size: 25px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    @include montserrat-medium;
+    max-width: 590px;
+    margin: 0 auto;
+    margin-bottom: 65px;
+  }
+}
+
+.store-link {
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+.slider {
+  position: relative;
+  background-color: #000;
+  padding-bottom: 90px;
+
+  &__wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    @include list-null;
+    transition: 0.2s;
+  }
+
+  &__item {
+    min-width: 100%;
+
+    &-img {
+      width: 100%;
+    }
+
+    &-text {
+      @include montserrat-bold;
+      font-size: 45px;
+      line-height: 120%;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      max-width: 655px;
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: url("btn-slider.svg"), no-repeat, 50% 50%;
+    box-sizing: border-box;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    &--prev {
+      left: 0;
+      margin-left: 4rem;
+    }
+
+    &--next {
+      right: 0;
+      margin-right: 4rem;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.options {
+  text-align: center;
+
+  &__heading {
+    @include montserrat-bold;
+    font-size: 50px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+  }
+}
+
+.options-wrap {
+  max-width: 1288px;
+  margin: 0 auto;
+}
+
+.options-list {
+  @include list-null;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 200px;
+}
+
+.options-item {
+  max-width: 396px;
+
+  &:not(:last-child) {
+    margin-right: 50px;
+  }
+
+  &__heading {
+    @include montserrat-bold;
+    font-size: 35px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+  }
+
+  &__text {
+    @include montserrat-medium;
+    font-size: 25px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+  }
+}
+
+// === / COMMON ===
