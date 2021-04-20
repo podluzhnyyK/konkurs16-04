@@ -53,6 +53,13 @@
 // === / FUNCTIONS ===
 
 // === VARIABLES ===
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
 $base: 4px;
 // === / VARIABLES ===
 
@@ -76,6 +83,10 @@ a {
 .container {
   max-width: 1055px;
   margin: 0 auto;
+
+  @media (max-width: $breakpoint-lg) {
+    max-width: 750px;
+  }
 }
 
 .header {
@@ -83,6 +94,12 @@ a {
   text-align: center;
   padding-top: 200px;
   padding-bottom: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media (max-width: $breakpoint-lg) {
+    padding-top: 100px;
+  }
 
   &__heading {
     font-size: 75px;
@@ -90,6 +107,14 @@ a {
     letter-spacing: -0.02em;
     @include montserrat-bold;
     margin-bottom: 30px;
+
+    @media (max-width: $breakpoint-lg) {
+      font-size: 55px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 36px;
+    }
   }
 
   &__text {
@@ -103,9 +128,28 @@ a {
   }
 }
 
+.header-wrap {
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .store-link {
   &:not(:last-child) {
     margin-right: 30px;
+
+    @media (max-width: $breakpoint-md) {
+      margin-right: 0px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__img {
+    display: block;
   }
 }
 
@@ -141,6 +185,10 @@ a {
       max-width: 655px;
       margin: 0 auto;
       text-align: center;
+
+      @media (max-width: $breakpoint-sm) {
+        font-size: 36px;
+      }
     }
   }
 
@@ -168,6 +216,31 @@ a {
       margin-right: 4rem;
       transform: rotate(180deg);
     }
+
+    &:disabled {
+      opacity: 0.3;
+    }
+  }
+
+  &__dots {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    text-align: center;
+  }
+
+  &-dot {
+    width: 10px;
+    height: 10px;
+    margin: 5px 7px;
+    padding: 0;
+    display: inline-block;
+    background-color: #bbb;
+    border-radius: 5px;
+    cursor: pointer;
   }
 }
 
@@ -185,22 +258,22 @@ a {
 .options-wrap {
   max-width: 1288px;
   margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .options-list {
   @include list-null;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 50px 20px;
   margin-bottom: 200px;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+  justify-items: center;
 }
 
 .options-item {
   max-width: 396px;
-
-  &:not(:last-child) {
-    margin-right: 50px;
-  }
 
   &__heading {
     @include montserrat-bold;
